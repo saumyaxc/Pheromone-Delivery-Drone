@@ -22,6 +22,8 @@ def randomSearch(coordinates):
         stop = True
 
     threading.Thread(target=waitForEnter, daemon=True).start()
+    
+    startTimer = time.time()
 
     while not stop:
 
@@ -30,6 +32,8 @@ def randomSearch(coordinates):
         
             if d < bestDistance:
                 bestDistance, bestRoute = d, route
+    endTimer = time.time()
 
-    print("Best Distance =", math.ceil(bestDistance))
+    print("Best Distance =", math.ceil(bestDistance), "meters")
     print("Best Route =" , bestRoute)
+    print("Best Time =", round(endTimer - startTimer, 4), "s")

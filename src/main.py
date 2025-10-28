@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from randomsearch import randomSearch as rs
-# from nearestneighbor import nearestNeighbor as nn
+from nearestNeighbor import NearestNeighborDistance as nn
 # from augmented import augmentedNearestNeighbor as ann
 
 def main():
@@ -30,7 +30,9 @@ def main():
 
     elif alg_type == '2':
         print("Running Nearest Neighbor Algorithm...")
-        # nn()
+        nn(coordinates)
+        
+
     else:
         print("Running Augmented Nearest Neighbor Algorithm...")
         # ann()
