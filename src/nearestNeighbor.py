@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import time
 
 #basic KNN algorithm - used geeksforgeeks for algorithm reference
 def euclideanDistance(x, y):
@@ -8,35 +9,57 @@ def euclideanDistance(x, y):
         total += ((x[i]-y[i])**2)
     return math.sqrt(total)
 
-def NearestNeighborDistance (trainingData, testVal, k):
-    distance = []
-    for i in range(len(trainingData)):
-        dist = euclideanDistance(testVal, trainingData[i])
-        distance.append([dist, trainingData[i]])
+def NearestNeighborDistance (dataPts):
 
-    #sort by distance:
-    for i in range(len(distance)):
-        for j in range (i+1, len(distance)):
-            if distance[i][0] > distance[j][0]:
-                temp = distance[i]
-                distance[i] = distance[j]
-                distance[j] = temp
-    
-    nearestAlg = []
-    for i in range(k):
-        nearestAlg.append(distance[i])
-    
-    return nearestAlg
+    n = len(dataPts)
+    visited = [False] * n
+    route = [0]
+    visited[0] = True
+    totalDistance = 0.0
+    currIndex = 0
 
-#TEMP TEST CASE - sample
-trainingData = [[1,1], [1,2], [2,3], [2,2], [3,4], [5,6],[7,8]]
+    for step in range(n-1):
+        nearestIndex = -1
+        nearestDistance = float("inf")
 
-testVal = [3,3]
-k = 1
+        for j in range(n):
+            if not visited[j]:
+                d = euclideanDistance(dataPts[currIndex], dataPts[j])
+                if d < nearestDistance:
+                    nearestDistance = d
+                    nearestIndex = j
+        
+        route.append(nearestIndex)
+        visited[nearestIndex] = True
+        totalDistance += nearestDistance
+        currIndex = nearestIndex
 
-nearestVals = NearestNeighborDistance(trainingData, testVal, k)
+    backToBase = euclideanDistance(dataPts[currIndex], dataPts[0])
+    totalDistance += backToBase
+    route.append(0)
 
-for i, j in nearestVals:
-    print("Point:", j, "Distance:", i)
-   
-    
+    return route, totalDistance
+
+
+#===============================================================
+
+#temporary test cases
+if __name__ == "__main__":
+    samplePoints = np.array([
+        [9.1113464e+00, 9.2960887e+01],
+        [5.7620938e+01, 6.9666720e+01],
+        [6.8336324e+01, 5.8279097e+01],
+        [5.4659311e+01, 8.1539721e+01],
+        [4.2572884e+01, 8.7901390e+01],
+        [6.4444278e+01, 9.8891162e+01],
+        [6.4761763e+01, 5.2237536e-02]
+    ])
+
+    startTimer = time.time()
+    route, distance = NearestNeighborDistance(samplePoints)
+    endTimer = time.time()
+
+    runTime = endTimer - startTimer
+    print("Route:", route)
+    print("Total Distance:", round(distance, 2))
+    print("Runtime:", round(runTime, 4), "s")
