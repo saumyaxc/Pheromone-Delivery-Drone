@@ -11,6 +11,8 @@ def euclideanDistance(x, y):
 
 def NearestNeighborDistance (dataPts):
 
+    startTimer = time.time()
+
     n = len(dataPts)
     visited = [False] * n
     route = [0]
@@ -38,7 +40,13 @@ def NearestNeighborDistance (dataPts):
     totalDistance += backToBase
     route.append(0)
 
-    return route, totalDistance
+    route = [x + 1 for x in route]
+
+    endTimer = time.time()
+
+    print("Best Distance:", round(totalDistance, 2), "m")
+    print("Best Route:", route)
+    print("Runtime:", round(endTimer - startTimer, 4), "s")
 
 
 #===============================================================
