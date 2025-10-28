@@ -34,6 +34,6 @@ def randomSearch(coordinates):
                 bestDistance, bestRoute = d, route
     endTimer = time.time()
 
-    print("Best Distance =", math.ceil(bestDistance), "meters")
+    print("\nBest Distance =", math.ceil(bestDistance), "meters")
     print("Best Route =" , bestRoute)
-    print("Best Time =", round(endTimer - startTimer, 4), "s")
+    print("Best Time =", round(endTimer - startTimer, 4), "seconds\n")
