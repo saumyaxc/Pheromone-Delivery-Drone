@@ -2,7 +2,7 @@ import seaborn as sns
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import math
+import math, sys
 
 from randomsearch import randomSearch as rs
 from nearestNeighbor import NearestNeighborDistance as nn
@@ -27,6 +27,10 @@ def main():
 
     print("\nThere are", len(coordinates), "nodes.")
 
+    if len(coordinates) > 256:
+        print("The number of nodes exceeds 256! Try again with fewer nodes.")
+        sys.exit()
+
     alg_type = input("\nChoose an algorithm to solve the Pheromone Delivery Drone problem.\n1. Random Search\n2. Nearest Neighbor\n3. Augmented Nearest Neighbor\nEnter choice: ")
 
     while alg_type not in ('1', '2', '3'):
@@ -44,11 +48,14 @@ def main():
     else:
         print("Running Augmented Nearest Neighbor Algorithm...")
         # ann()
+    
+    outputfile = filename + "_SOLUTION_" + str(round(distance)) + ".txt"
 
-    print("Route written to disk as " + filename + "_SOLUTION_" + str(round(distance)) + ".txt")
-    # actually implement this one !!
-    
-    
+    #with open(outputfile, 'w') as f:
+    #    for node in route:
+    #        f.write(str(node) + ' ')
+
+    print("Route written to disk as", outputfile)
 
 if __name__ == "__main__":
     main()
