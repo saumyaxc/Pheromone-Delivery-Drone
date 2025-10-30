@@ -39,8 +39,8 @@ def randomSearch(coordinates):
     if round(bestDistance, 1) > 6000:
         print("Warning: Solution is ", round(bestDistance, 1), "greater than the 6000-meter constraint. ")
 
-    print("\nBest Distance =", round(bestDistance, 1), "meters")
-    print("Best Route =" , bestRoute)
-    print("Best Time =", round(endTimer - startTimer, 4), "seconds\n")
+    # print("\nBest Distance =", round(bestDistance, 1), "meters")
+    # print("Best Route =" , bestRoute)
+    # print("Best Time =", round(endTimer - startTimer, 4), "seconds\n")
 
-    return bestDistance, bestRoute
+    return bestDistance, bestRoute, endTimer - startTimer
