@@ -31,7 +31,7 @@ def main():
         print("The number of nodes exceeds 256! Try again with fewer nodes.")
         sys.exit()
 
-    alg_type = input("\nChoose an algorithm to solve the Pheromone Delivery Drone problem.\n1. Random Search\n2. Nearest Neighbor\n3. Augmented Nearest Neighbor\nEnter choice: ")
+    alg_type = input("\nChoose an algorithm to solve the Pheromone Delivery Drone problem.\n1. Random Search\n2. Nearest Neighbor\n3. Augmented Nearest Neighbor\n\nEnter choice: ")
 
     while alg_type not in ('1', '2', '3'):
         print("Invalid input. Please enter '1', '2', or '3'.")
@@ -51,11 +51,16 @@ def main():
     
     outputfile = filename + "_SOLUTION_" + str(round(distance)) + ".txt"
 
-    #with open(outputfile, 'w') as f:
+
+    # INCLUDE THIS CODE TO CREATE NEW SOLUTION FILE
+    # =============================================
+    # with open(outputfile, 'w') as f:
     #    for node in route:
     #        f.write(str(node) + ' ')
+    # =============================================
 
-    print("Route written to disk as", outputfile)
+    print("==> Route written to disk as", outputfile)
+    print("\n")
 
 if __name__ == "__main__":
     main()
