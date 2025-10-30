@@ -2,11 +2,11 @@ import seaborn as sns
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import math, sys
+import sys
 
 from randomsearch import randomSearch as rs
 from nearestNeighbor import NearestNeighborDistance as nn
-# from augmented import augmentedNearestNeighbor as ann
+from augmented import augmentedNearestNeighbor as ann
 
 def main():
     
@@ -39,17 +39,21 @@ def main():
 
     if alg_type == '1':
         print("Running Random Search Algorithm...")
-        distance, route = rs(coordinates)
+        distance, route, time = rs(coordinates)
 
     elif alg_type == '2':
         print("Running Nearest Neighbor Algorithm...")
-        distance, route = nn(coordinates)
+        distance, route, time = nn(coordinates)
         
     else:
         print("Running Augmented Nearest Neighbor Algorithm...")
-        # ann()
+        distance, route, time = ann(coordinates)
     
     outputfile = filename + "_SOLUTION_" + str(round(distance)) + ".txt"
+
+    print("\nBest Distance:", round(distance, 1), "meters")
+    print("Best Route:", route)
+    print("Runtime:", round(time, 4), "seconds\n")
 
 
     # INCLUDE THIS CODE TO CREATE NEW SOLUTION FILE

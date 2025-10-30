@@ -1,6 +1,5 @@
 import numpy as np
-import math
-import time
+import math, time
 
 #basic KNN algorithm - used geeksforgeeks for algorithm reference
 def euclideanDistance(x, y):
@@ -47,11 +46,11 @@ def NearestNeighborDistance (dataPts):
     if totalDistance > 6000:
         print("Warning: Solution is ", totalDistance, "greater than the 6000-meter constraint. ")
 
-    print("\nBest Distance:", round(totalDistance, 1), "meters")
-    print("Best Route:", route)
-    print("Runtime:", round(endTimer - startTimer, 4), "seconds\n")
+    # print("\nBest Distance:", round(totalDistance, 1), "meters")
+    # print("Best Route:", route)
+    # print("Runtime:", round(endTimer - startTimer, 4), "seconds\n")
 
-    return totalDistance, route
+    return totalDistance, route, endTimer - startTimer
 
 
 # #===============================================================
