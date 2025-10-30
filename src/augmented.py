@@ -17,7 +17,7 @@ def tour_distance(points, route):
         totalDistance += euclideanDistance(points[a], points[b])
     return totalDistance
 
-    def augmentedNearestNeighbor(points):
+def augmentedNearestNeighbor(points):
 
 
     print("\nBest Distance:", round(totalDistance, 2), "meters")
