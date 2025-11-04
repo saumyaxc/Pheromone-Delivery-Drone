@@ -16,7 +16,7 @@ def augmentedNearestNeighbor(dataPts):
     stop = threading.Event()  
 
     def waitForEnter():
-        input("Press ENTER to stop the search!\n")
+        input("Press ENTER if you want to stop the search!\n")
         stop.set()
 
     threading.Thread(target=waitForEnter, daemon=True).start()

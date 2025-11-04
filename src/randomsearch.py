@@ -18,7 +18,7 @@ def randomSearch(coordinates):
 
     def waitForEnter():
         nonlocal stop
-        input("Press ENTER if you want stop the search!\n")
+        input("Press ENTER if you want to stop the search!\n")
         stop = True
 
     threading.Thread(target=waitForEnter, daemon=True).start()
