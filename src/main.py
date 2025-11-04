@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 
-from randomsearch import randomSearch as rs
+from randomSearch import randomSearch as rs
 from nearestNeighbor import NearestNeighborDistance as nn
 from augmented import augmentedNearestNeighbor as ann
 from visualize import visualization as vis
