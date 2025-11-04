@@ -10,7 +10,7 @@ The problem we are trying to solve is that the drone's current flight time is to
 
 ## Execution
 
-1. Run the code by using this command in the terminal --> python main.py
+1. Run the code by using this command in the terminal &rarr python main.py
 2. When prompted for a file, enter the name of a file of your choice. 
 3. Then, when prompted for an algorithm, please choose one of the three algorithms we implemented by selecting 1, 2, or 3: Random Search, Nearest Neighbor, or Augmented Nearest Neighbor. 
 4. Press ENTER to stop the algorithm from running for choices 1 and 3.
