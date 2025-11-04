@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import math
 
 def visualization(filename, coords, route, distance):
-    distance = math.ceil(distance)
 
     route_coords = [coords[i - 1] for i in route]
     x = [p[0] for p in route_coords]

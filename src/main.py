@@ -61,9 +61,11 @@ def main():
     if filename.endswith(".txt"):
         filename = filename[:-4]
 
-    outputfile = filename + "_SOLUTION_" + str(round(distance)) + ".txt"
+    distance = math.ceil(distance)
+    
+    outputfile = filename + "_SOLUTION_" + str(distance) + ".txt"
 
-    print("\nBest Distance:", round(distance, 1), "meters")
+    print("\nBest Distance:", distance, "meters")
     print("Best Route:", route)
     print("Runtime:", round(time, 4), "seconds\n")
 
