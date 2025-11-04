@@ -23,6 +23,13 @@ def main():
                     if len(line.split()) != 2:
                          raise ValueError("Error in file formatting! Every line needs two numbers")
                     x, y = map(float, line.split())
+
+                    if x < 0 or y < 0:
+                        raise ValueError("Coordinate values can not be negative.")
+                    
+                    if (x,y) in coordinates:
+                        raise ValueError("Duplicate coordinate found. Skipping over")
+                        continue
                     coordinates.append((x, y))             
             break
         except FileNotFoundError:
