@@ -7,6 +7,7 @@ import sys
 from randomsearch import randomSearch as rs
 from nearestNeighbor import NearestNeighborDistance as nn
 from augmented import augmentedNearestNeighbor as ann
+from visualize import visualization as vis
 
 def main():
     
@@ -57,6 +58,9 @@ def main():
         print("Running Augmented Nearest Neighbor Algorithm...")
         distance, route, time = ann(coordinates)
     
+    if filename.endswith(".txt"):
+        filename = filename[:-4]
+
     outputfile = filename + "_SOLUTION_" + str(round(distance)) + ".txt"
 
     print("\nBest Distance:", round(distance, 1), "meters")
@@ -66,12 +70,13 @@ def main():
 
     # INCLUDE THIS CODE TO CREATE NEW SOLUTION FILE
     # =============================================
-    # with open(outputfile, 'w') as f:
-    #    for node in route:
-    #        f.write(str(node) + ' ')
+    with open(outputfile, 'w') as f:
+        for node in route:
+            f.write(str(node) + ' ')
     # =============================================
 
     print("==> Route written to disk as", outputfile)
+    vis(filename, coordinates, route, distance)
     print("\n")
 
 if __name__ == "__main__":
