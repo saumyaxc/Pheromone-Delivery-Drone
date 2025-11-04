@@ -19,11 +19,19 @@ def main():
         try:
             with open(filepath, "r") as file:
                 for line in file:
+                    if len(line.split()) != 2:
+                         raise ValueError("Error in file formatting! Every line needs two numbers")
                     x, y = map(float, line.split())
-                    coordinates.append((x, y)) 
+                    coordinates.append((x, y))             
             break
         except FileNotFoundError:
             print(f"Error: The file '{filename}' does not exist. Please try again.\n")
+        except ValueError as e:
+            print(f"Value is not recognized: {e}. Please try again.\n")
+    
+    if len(coordinates) == 0:
+        print("No coordinates found in file")
+        sys.exit()
 
     print("\nThere are", len(coordinates), "nodes.")
 
